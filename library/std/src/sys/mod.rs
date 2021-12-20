@@ -37,6 +37,9 @@ cfg_if::cfg_if! {
     } else if #[cfg(target_os = "hermit")] {
         mod hermit;
         pub use self::hermit::*;
+    } else if #[cfg(target_os = "twizzler")] {
+        mod twizzler;
+        pub use self::twizzler::*;
     } else if #[cfg(target_os = "wasi")] {
         mod wasi;
         pub use self::wasi::*;
