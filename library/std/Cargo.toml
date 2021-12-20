@@ -44,6 +44,9 @@ fortanix-sgx-abi = { version = "0.3.2", features = ['rustc-dep-of-std'] }
 [target.'cfg(all(any(target_arch = "x86_64", target_arch = "aarch64"), target_os = "hermit"))'.dependencies]
 hermit-abi = { version = "0.1.19", features = ['rustc-dep-of-std'] }
 
+[target.'cfg(all(any(target_arch = "x86_64", target_arch = "aarch64"), target_os = "twizzler"))'.dependencies]
+twizzler-abi = { path = "../../../code/twizzler-rust/src/lib/twizzler-abi", version = "0.1.0", features = ['rustc-dep-of-std'], default-features = false }
+
 [target.'cfg(all(any(target_arch = "x86_64", target_arch = "aarch64"), target_os = "twizzler"))'.dependencies.compiler_builtins]
 features = [ "mem" ]
 

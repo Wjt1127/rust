@@ -100,18 +100,13 @@ pub fn hashmap_random_keys() -> (u64, u64) {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn runtime_start(env: *const *const i8) {
+pub unsafe extern "C" fn std_runtime_start(env: *const *const i8) {
     extern "C" {
         fn main(argc: isize, argv: *const *const c_char) -> i32;
     }
     crate::sys::os::init_environment(env);
+    twizzler_abi::ready();
     main(0, core::ptr::null());
     thread_local_dtor::run_dtors();
     __rust_abort();
-}
-
-#[naked]
-#[no_mangle]
-pub unsafe extern "C" fn _start() -> ! {
-    asm!("and rsp, 0xfffffffffffffff0", "call runtime_start", options(noreturn));
 }
