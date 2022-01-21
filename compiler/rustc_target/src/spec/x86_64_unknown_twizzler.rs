@@ -1,5 +1,6 @@
 use crate::spec::{StackProbeType, Target};
 
+const LINKER_SCRIPT: &str = include_str!("./x86_64_unknown_twizzler_linker_script.ld");
 pub fn target() -> Target {
     let mut base = super::twizzler_base::opts();
     base.cpu = "x86-64".to_string();
@@ -7,6 +8,7 @@ pub fn target() -> Target {
     base.features = "+rdrnd,+rdseed".to_string();
     // don't use probe-stack=inline-asm until rust#83139 and rust#84667 are resolved
     base.stack_probes = StackProbeType::Call;
+    base.link_script = Some(LINKER_SCRIPT.to_string());
 
     Target {
         llvm_target: "x86_64-unknown-twizzler".to_string(),

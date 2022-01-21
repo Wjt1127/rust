@@ -5476,7 +5476,6 @@ dependencies = [
 [[package]]
 name = "twizzler-abi"
 version = "0.1.0"
-source = "git+https://github.com/dbittman/twizzler-abi#220139447d5fb0b8ff321f0ea69ab595d9a2b74d"
 dependencies = [
  "bitflags",
  "compiler_builtins",
