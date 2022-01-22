@@ -28,7 +28,6 @@ pub mod pipe;
 pub mod process;
 #[path = "../unsupported/rwlock.rs"]
 pub mod rwlock;
-#[path = "../unsupported/stdio.rs"]
 pub mod stdio;
 #[path = "../unsupported/thread.rs"]
 pub mod thread;
