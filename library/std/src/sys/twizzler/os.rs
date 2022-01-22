@@ -69,6 +69,7 @@ pub fn current_exe() -> io::Result<PathBuf> {
     unsupported()
 }
 
+#[allow(dead_code)]
 pub fn init_environment(env: *const *const i8) {
     use crate::os::twizzler::ffi::os_str::OsStringExt;
     unsafe {

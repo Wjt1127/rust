@@ -1,6 +1,7 @@
 use crate::spec::{StackProbeType, Target};
 
 const LINKER_SCRIPT: &str = include_str!("./x86_64_unknown_twizzler_linker_script.ld");
+
 pub fn target() -> Target {
     let mut base = super::twizzler_base::opts();
     base.cpu = "x86-64".to_string();

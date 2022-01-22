@@ -1,7 +1,6 @@
 use crate::intrinsics;
 use crate::os::raw::c_char;
 
-#[path = "../unsupported/alloc.rs"]
 pub mod alloc;
 pub mod args;
 #[path = "../unix/cmath.rs"]
@@ -100,11 +99,13 @@ pub fn hashmap_random_keys() -> (u64, u64) {
 }
 
 #[no_mangle]
+#[allow(unreachable_code)]
+#[allow(unused_variables)]
 pub unsafe extern "C" fn std_runtime_start(env: *const *const i8) {
     extern "C" {
         fn main(argc: isize, argv: *const *const c_char) -> i32;
     }
-    crate::sys::os::init_environment(env);
+    //crate::sys::os::init_environment(env);
     twizzler_abi::ready();
     main(0, core::ptr::null());
     thread_local_dtor::run_dtors();
