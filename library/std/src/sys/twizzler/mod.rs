@@ -26,7 +26,6 @@ pub mod pipe;
 pub mod process;
 pub mod rwlock;
 pub mod stdio;
-#[path = "../unsupported/thread.rs"]
 pub mod thread;
 pub mod thread_local_dtor;
 #[path = "../unsupported/thread_local_key.rs"]
