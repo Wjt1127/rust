@@ -30,7 +30,6 @@ pub mod thread;
 pub mod thread_local_dtor;
 #[path = "../unsupported/thread_local_key.rs"]
 pub mod thread_local_key;
-#[path = "../unsupported/time.rs"]
 pub mod time;
 
 pub fn unsupported<T>() -> crate::io::Result<T> {
