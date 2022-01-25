@@ -5,7 +5,6 @@ pub mod alloc;
 pub mod args;
 #[path = "../unix/cmath.rs"]
 pub mod cmath;
-#[path = "../unsupported/condvar.rs"]
 pub mod condvar;
 pub mod env;
 #[path = "../unsupported/fs.rs"]
@@ -13,7 +12,6 @@ pub mod fs;
 #[path = "../unsupported/io.rs"]
 pub mod io;
 pub mod memchr;
-#[path = "../unsupported/mutex.rs"]
 pub mod mutex;
 #[path = "../unsupported/net.rs"]
 pub mod net;
@@ -26,7 +24,6 @@ pub mod path;
 pub mod pipe;
 #[path = "../unsupported/process.rs"]
 pub mod process;
-#[path = "../unsupported/rwlock.rs"]
 pub mod rwlock;
 pub mod stdio;
 #[path = "../unsupported/thread.rs"]

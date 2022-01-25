@@ -10,9 +10,21 @@ impl Stdin {
     }
 }
 
+use twizzler_abi::syscall::KernelConsoleReadError;
+#[unstable(feature = "twizzler_kernel_console_read", issue = "none", reason = "not all errors have been implemented")]
+impl From<KernelConsoleReadError> for io::Error {
+    fn from(x: KernelConsoleReadError) -> Self {
+        match x {
+            KernelConsoleReadError::WouldBlock => Self::from(io::ErrorKind::WouldBlock),
+            KernelConsoleReadError::IOError => Self::from(io::ErrorKind::Unsupported),
+            KernelConsoleReadError::NoSuchDevice => Self::from(io::ErrorKind::Unsupported)
+        }
+    }
+}
+
 impl io::Read for Stdin {
-    fn read(&mut self, _buf: &mut [u8]) -> io::Result<usize> {
-        Ok(0)
+    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
+        twizzler_abi::syscall::sys_kernel_console_read(buf, twizzler_abi::syscall::KernelConsoleReadFlags::empty()).map_err(|e| e.into())
     }
 }
 
