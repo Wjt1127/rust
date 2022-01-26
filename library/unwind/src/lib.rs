@@ -24,6 +24,7 @@ cfg_if::cfg_if! {
         windows,
         target_os = "psp",
         target_os = "solid_asp3",
+        target_os = "twizzler",
         all(target_vendor = "fortanix", target_env = "sgx"),
     ))] {
         mod libunwind;

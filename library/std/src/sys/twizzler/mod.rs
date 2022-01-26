@@ -99,7 +99,7 @@ pub unsafe extern "C" fn std_runtime_start(env: *const *const i8) {
     extern "C" {
         fn main(argc: isize, argv: *const *const c_char) -> i32;
     }
-    //crate::sys::os::init_environment(env);
+    crate::sys::os::init_environment(env);
     twizzler_abi::ready();
     main(0, core::ptr::null());
     thread_local_dtor::run_dtors();

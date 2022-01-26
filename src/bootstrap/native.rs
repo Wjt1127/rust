@@ -1035,6 +1035,13 @@ impl Step for Libunwind {
                 cfg.define("_LIBUNWIND_IS_BAREMETAL", None);
                 cfg.define("__LIBUNWIND_IS_NATIVE_ONLY", None);
                 cfg.define("NDEBUG", None);
+            } else if self.target.contains("twizzler") {
+                cfg.static_flag(true);
+                cfg.define("_LIBUNWIND_IS_BAREMETAL", None);
+                cfg.define("_LIBUNWIND_IS_BAREMETAL", None);
+                cfg.define("_LIBUNWIND_HAS_NO_THREADS", None);
+                cfg.define("_LIBUNWIND_REMEMBER_STACK_ALLOC", None);
+                cfg.define("NDEBUG", None);
             }
         }
 

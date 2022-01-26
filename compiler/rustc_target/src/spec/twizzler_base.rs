@@ -14,7 +14,7 @@ pub fn opts() -> TargetOptions {
         executables: true,
         has_elf_tls: true,
         pre_link_args,
-        panic_strategy: PanicStrategy::Abort,
+        panic_strategy: PanicStrategy::Unwind,
         position_independent_executables: false,
         static_position_independent_executables: false,
         tls_model: TlsModel::InitialExec,

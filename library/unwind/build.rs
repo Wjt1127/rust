@@ -39,6 +39,8 @@ fn main() {
         println!("cargo:rustc-link-lib=unwind");
     } else if target.contains("fuchsia") {
         println!("cargo:rustc-link-lib=unwind");
+    } else if target.contains("twizzler") {
+        println!("cargo:rustc-link-lib=unwind");
     } else if target.contains("haiku") {
         println!("cargo:rustc-link-lib=gcc_s");
     } else if target.contains("redox") {

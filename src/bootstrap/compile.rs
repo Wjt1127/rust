@@ -177,7 +177,9 @@ fn copy_third_party_objects(
 
     if target == "x86_64-fortanix-unknown-sgx"
         || builder.config.llvm_libunwind == LlvmLibunwind::InTree
-            && (target.contains("linux") || target.contains("fuchsia"))
+            && (target.contains("linux")
+                || target.contains("fuchsia")
+                || target.contains("twizzler"))
     {
         let libunwind_path =
             copy_llvm_libunwind(builder, target, &builder.sysroot_libdir(*compiler, target));
