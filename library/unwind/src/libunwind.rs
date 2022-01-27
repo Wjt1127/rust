@@ -87,7 +87,10 @@ pub type _Unwind_Exception_Cleanup_Fn =
 // rustc_codegen_ssa::src::back::symbol_export, rustc_middle::middle::exported_symbols
 // and RFC 2841
 #[cfg_attr(
-    all(feature = "llvm-libunwind", any(target_os = "fuchsia", target_os = "linux")),
+    all(
+        feature = "llvm-libunwind",
+        any(target_os = "fuchsia", target_os = "linux", target_os = "twizzler")
+    ),
     link(name = "unwind", kind = "static", modifiers = "-bundle")
 )]
 extern "C-unwind" {
@@ -116,7 +119,7 @@ if #[cfg(any(target_os = "ios", target_os = "netbsd", not(target_arch = "arm")))
     pub use _Unwind_Action::*;
 
     #[cfg_attr(
-        all(feature = "llvm-libunwind", any(target_os = "fuchsia", target_os = "linux")),
+        all(feature = "llvm-libunwind", any(target_os = "fuchsia", target_os = "linux", target_os = "twizzler")),
         link(name = "unwind", kind = "static", modifiers = "-bundle")
     )]
     extern "C" {
@@ -240,7 +243,7 @@ cfg_if::cfg_if! {
 if #[cfg(not(all(target_os = "ios", target_arch = "arm")))] {
     // Not 32-bit iOS
     #[cfg_attr(
-        all(feature = "llvm-libunwind", any(target_os = "fuchsia", target_os = "linux")),
+        all(feature = "llvm-libunwind", any(target_os = "fuchsia", target_os = "linux", target_os = "twizzler")),
         link(name = "unwind", kind = "static", modifiers = "-bundle")
     )]
     extern "C-unwind" {

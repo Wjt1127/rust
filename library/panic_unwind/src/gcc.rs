@@ -49,6 +49,7 @@ struct Exception {
     cause: Box<dyn Any + Send>,
 }
 
+#[allow(named_asm_labels)]
 pub unsafe fn panic(data: Box<dyn Any + Send>) -> u32 {
     let exception = Box::new(Exception {
         _uwe: uw::_Unwind_Exception {
