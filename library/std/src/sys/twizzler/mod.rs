@@ -58,8 +58,9 @@ pub extern "C" fn floor(x: f64) -> f64 {
     unsafe { intrinsics::floorf64(x) }
 }
 
+#[inline]
 pub fn abort_internal() -> ! {
-    loop {} //TODO
+    twizzler_abi::abort();
 }
 
 // This function is needed by the panic runtime. The symbol is named in
@@ -95,13 +96,13 @@ pub fn hashmap_random_keys() -> (u64, u64) {
 #[no_mangle]
 #[allow(unreachable_code)]
 #[allow(unused_variables)]
-pub unsafe extern "C" fn std_runtime_start(env: *const *const i8) {
+pub unsafe extern "C" fn std_runtime_start(env: *const *const i8) -> i32 {
     extern "C" {
         fn main(argc: isize, argv: *const *const c_char) -> i32;
     }
     crate::sys::os::init_environment(env);
     twizzler_abi::ready();
-    main(0, core::ptr::null());
+    let code = main(0, core::ptr::null());
     thread_local_dtor::run_dtors();
-    __rust_abort();
+    code
 }
