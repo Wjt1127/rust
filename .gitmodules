@@ -33,7 +33,7 @@
 	url = https://github.com/rust-lang/edition-guide.git
 [submodule "src/llvm-project"]
 	path = src/llvm-project
-	url = https://github.com/dbittman/llvm-project.git
+	url = ../llvm-project.git
 	branch = twizzler2
 [submodule "src/doc/embedded-book"]
 	path = src/doc/embedded-book
@@ -43,9 +43,9 @@
 	url = https://github.com/rust-analyzer/rust-analyzer.git
 [submodule "library/backtrace"]
 	path = library/backtrace
-	url = git@github.com:dbittman/backtrace-rs.git
+	url = ../backtrace-rs.git
 	branch = twizzler2
 [submodule "libc"]
 	path = libc
-	url = git@github.com:dbittman/libc.git
+	url = ../libc.git
 	branch = twizzler2
